@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\Board">
+      <UniqueIdentifier>{0d224d09-4f6b-4b6e-9d6f-8705d8b7bfd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Board">
+      <UniqueIdentifier>{5b5a5708-4e32-4e8c-a30f-02c229e4ad42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Game">
+      <UniqueIdentifier>{865931de-237b-4e74-8f01-b15bf1ec9444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Game">
+      <UniqueIdentifier>{07500760-953d-4df7-b430-c2fbfbd66eff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Objects">
+      <UniqueIdentifier>{52dacd81-96b5-4c61-8235-82d978e0b00a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Objects">
+      <UniqueIdentifier>{22a9d600-c993-4cff-93c4-8da563594bbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Objects\Apple">
+      <UniqueIdentifier>{c29b8a2e-826b-41ae-919f-efa1dd3178a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Objects\Snake">
+      <UniqueIdentifier>{e76a209a-eee7-4176-b6f4-fa35da3c7f63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SnakeEngine.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Файлы заголовков\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Файлы заголовков\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Файлы заголовков\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CellContent.h">
+      <Filter>Файлы заголовков\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveDirection.h">
+      <Filter>Файлы заголовков\Objects\Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Файлы заголовков\Objects\Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Файлы заголовков\Objects\Apple</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SnakeEngine.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Исходные файлы\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Исходные файлы\Objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
