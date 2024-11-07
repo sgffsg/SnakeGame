@@ -31,12 +31,6 @@
     <Filter Include="Исходные файлы\Objects">
       <UniqueIdentifier>{22a9d600-c993-4cff-93c4-8da563594bbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Objects\Apple">
-      <UniqueIdentifier>{c29b8a2e-826b-41ae-919f-efa1dd3178a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Objects\Snake">
-      <UniqueIdentifier>{e76a209a-eee7-4176-b6f4-fa35da3c7f63}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SnakeEngine.h">
@@ -54,14 +48,14 @@
     <ClInclude Include="CellContent.h">
       <Filter>Файлы заголовков\Board</Filter>
     </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Файлы заголовков\Objects</Filter>
+    </ClInclude>
     <ClInclude Include="MoveDirection.h">
-      <Filter>Файлы заголовков\Objects\Snake</Filter>
+      <Filter>Файлы заголовков\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Snake.h">
-      <Filter>Файлы заголовков\Objects\Snake</Filter>
-    </ClInclude>
-    <ClInclude Include="Apple.h">
-      <Filter>Файлы заголовков\Objects\Apple</Filter>
+      <Filter>Файлы заголовков\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

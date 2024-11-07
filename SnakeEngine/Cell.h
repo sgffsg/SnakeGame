@@ -5,22 +5,23 @@
 class Cell
 {
 	private:
-		Config config;
-		CellContent cellContent;
-	public:
 		int x;
 		int y;
+		CellContent cellContent;
+
+		Config config;
+	public:
+		
 
 		Cell();
 		Cell(int x, int y);
 		Cell(int x, int y, CellContent cellContent);
-		bool OnBoard();
 
-		const char GetCellOutSymbol();
 		CellContent GetCellContent();
-		
 		void ChangeCellContent(CellContent newCellContent);
+		const char GetCellOutSymbol();
 
+		bool OnBoard();
 		bool IsEmpty();
 		bool IsContainsApple();
 		bool IsContainsSnake();

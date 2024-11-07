@@ -2,28 +2,29 @@
 #include <deque>
 
 #include "Cell.h"
+#include "Board.h"
+#include "Config.h"
 #include "MoveDirection.h"
 
 class Snake
 {
 	private:
-		std::deque<Cell> snakeBody;
+		
 
+		Config config;
 		MoveDirection moveDirection;
 		MoveDirection lastMoveDirection;
 
-		void Grow(Cell newCell);
-
-		void CheckCollision();
-		bool CheckAppleCollision();
-		bool CheckBorderCollision();
-		bool CheckOwnCollision();
+		
 	public:
+		
+		std::deque<Cell> snakeBody;
+
 		Snake();
-
-		MoveDirection GetMoveDirection();
-
+		void Init();
 		void Move();
-		void Eat();
+		
+		MoveDirection GetMoveDirection();
+		void SetMoveDirection(MoveDirection moveDirection);	
 };
 

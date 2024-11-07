@@ -8,9 +8,17 @@ Apple::Apple()
 Apple::Apple(Cell appleCell)
 {
 	this->appleCell = &appleCell;
+	
 }
 
-bool Apple::CheckCollision()
+Cell Apple::GetAppleCell()
 {
-	return false;
+	return *this->appleCell;
 }
+
+//Cell Apple::Create(Cell appleCell)
+//{
+//	this->appleCell = &appleCell;
+//	this->appleCell->ChangeCellContent(CellContent::APPLE);
+//	return *this->appleCell;
+//}

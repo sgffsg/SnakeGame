@@ -7,10 +7,9 @@ class Apple
 		Cell* appleCell;
 	public:
 		
+
 		Apple();
 		Apple(Cell appleCell);
-		
-		
-		bool CheckCollision();
+		Cell GetAppleCell();
 };
 

@@ -27,6 +27,16 @@ bool Cell::OnBoard()
 			(y >= 0 && y < this->config.BOARD_COLUMN_SIZE);
 }
 
+CellContent Cell::GetCellContent()
+{
+	return this->cellContent;
+}
+
+void Cell::ChangeCellContent(CellContent newCellContent)
+{
+	this->cellContent = newCellContent;
+}
+
 const char Cell::GetCellOutSymbol()
 {
     switch (cellContent)
@@ -40,9 +50,6 @@ const char Cell::GetCellOutSymbol()
 		case CellContent::SNAKE_HEAD:
 			return config.SNAKE_HEAD_OUT;
 
-		case CellContent::SNAKE_BODY:
-			return config.SNAKE_BODY_OUT;
-
 		case CellContent::SNAKE_TAIL:
 			return config.SNAKE_TAIL_OUT;
 
@@ -54,15 +61,6 @@ const char Cell::GetCellOutSymbol()
     }
 }
 
-CellContent Cell::GetCellContent()
-{
-	return this->cellContent;
-}
-
-void Cell::ChangeCellContent(CellContent newCellContent)
-{
-	this->cellContent = newCellContent;
-}
 
 bool Cell::IsEmpty()
 {
@@ -77,6 +75,5 @@ bool Cell::IsContainsApple()
 bool Cell::IsContainsSnake()
 {
 	return this->cellContent == CellContent::SNAKE_HEAD || 
-			this->cellContent == CellContent::SNAKE_BODY || 
 			 this->cellContent == CellContent::SNAKE_TAIL;
 }

@@ -1,20 +1,13 @@
-﻿#include <iostream>
-#include <vector>
-#include <Board.h>
-#include <SnakeEngine.h>
-
-
+﻿#include <SnakeEngine.h>
 
 
 int main()
 {
-    setlocale(LC_ALL, "russian");
     int seed = time(NULL);
     srand(seed);
 
-    SnakeEngine snakeEngine;
+    setlocale(LC_ALL, "russian");
 
+    SnakeEngine snakeEngine;
     snakeEngine.StartGame();
-    //system("pause");
-    snakeEngine.EndGame();
 }

@@ -1,3 +1,1 @@
-﻿  SnakeConsole.cpp
-C:\Users\Sakata\source\repos\SnakeGame\SnakeConsole\SnakeConsole.cpp(12,14): warning C4244: инициализация: преобразование "time_t" в "int", возможна потеря данных
-  SnakeConsole.vcxproj -> C:\Users\Sakata\source\repos\SnakeGame\x64\Debug\SnakeConsole.exe
+﻿  SnakeConsole.vcxproj -> C:\Users\Sakata\source\repos\SnakeGame\x64\Debug\SnakeConsole.exe

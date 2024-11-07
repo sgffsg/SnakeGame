@@ -2,20 +2,20 @@
 
 Board::Board()
 {
-	this->cells = std::vector <std::vector<Cell>>();
+	
 }
 
 
 #pragma region INIT
 	void Board::Init()
 	{
-		InitCells();
-		InitSnake();
-		InitApple();
-		PrintBoard();
+		this->cells = std::vector <std::vector<Cell>>();
+		InitField();
+		//InitSnake();
+		
 	}
 
-	void Board::InitCells()
+	void Board::InitField()
 	{
 		for (int x = 0; x < this->config.BOARD_ROW_SIZE; x++)
 		{
@@ -35,15 +35,10 @@ Board::Board()
 
 	void Board::InitSnake()
 	{
-		int startPosRow = config.BOARD_ROW_SIZE / 2 - 1;
-		int startPosCol = config.BOARD_COLUMN_SIZE / 2 - 1;
-
-		this->cells[startPosRow].at(startPosCol).ChangeCellContent(CellContent::SNAKE_HEAD);
-		this->cells[startPosRow + 1].at(startPosCol).ChangeCellContent(CellContent::SNAKE_BODY);
-		this->cells[startPosRow + 2].at(startPosCol).ChangeCellContent(CellContent::SNAKE_TAIL);
+		
 	}
 
-	void Board::InitApple()
+	Cell Board::CreateApple()
 	{
 		while (true)
 		{
@@ -53,16 +48,28 @@ Board::Board()
 			if (this->cells[randRow].at(randCol).OnBoard() && this->cells[randRow].at(randCol).IsEmpty())
 			{
 				this->cells[randRow].at(randCol).ChangeCellContent(CellContent::APPLE);
-				this->apple = Apple(this->cells[randRow].at(randCol));
-				break;
+				return cells[randRow].at(randCol);
 			}
 		}
+		return Cell();
+	}
+
+	std::deque<Cell> Board::CreateSnake()
+	{
+		std::deque<Cell> snakeBody;
+		int startPosRow = config.BOARD_ROW_SIZE / 2 - 1;
+		int startPosCol = config.BOARD_COLUMN_SIZE / 2 - 1;
+		this->cells[startPosRow].at(startPosCol).ChangeCellContent(CellContent::SNAKE_HEAD);
+		this->cells[startPosRow + 1].at(startPosCol).ChangeCellContent(CellContent::SNAKE_TAIL);
+
+		snakeBody.push_front(this->cells[startPosRow].at(startPosCol));
+		snakeBody.push_back(this->cells[startPosRow + 1].at(startPosCol));
+		
+		return snakeBody;
 	}
 #pragma endregion
 
-	
-
-	Cell Board::GetCell(int row, int col)
+Cell Board::GetCell(int row, int col)
 {
 	if (this->cells[row].at(col).OnBoard())
 		return this->cells[row].at(col);
@@ -70,22 +77,30 @@ Board::Board()
 	return Cell();
 }
 
-std::vector<std::vector<Cell>> Board::GetCells()
+std::vector<std::vector<Cell>> Board::GetAllCells()
 {
 	return this->cells;
 }
 
-Cell Board::GetAppleCell()
+void Board::ChangeCellContent(int row, int col, CellContent newCellContent)
+{
+	if (this->cells[row].at(col).OnBoard())
+		cells[row].at(col).ChangeCellContent(newCellContent);
+}
+
+
+bool Board::IsWin()
 {
 	for (int x = 0; x < cells.size(); x++)
 		for (int y = 0; y < cells[x].size(); y++)
-			if (cells[x].at(y).IsContainsApple())
-				return cells[x].at(y);
-	return Cell(1, 1, CellContent::APPLE);
+			if (cells[x].at(y).IsEmpty())
+				return false;
+	return true;
 }
 
 void Board::PrintBoard()
 {
+	system("cls");
 	for (int x = 0; x < cells.size(); x++)
 	{
 		std::vector<Cell> cellRow = cells[x];
@@ -100,3 +115,4 @@ void Board::PrintBoard()
 		std::cout << std::endl;
 	}
 }
+

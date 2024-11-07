@@ -1,36 +1,44 @@
 #pragma once
 #include <vector>
-#include <iterator>
-#include <random>
-#include <conio.h>
-#include "windows.h"
 #include <iostream>
+#include <deque>
+//#include <iterator>
+//#include <random>
+//#include <conio.h>
+//#include "windows.h"
+//#include <iomanip>
+
 #include "Cell.h"
 #include "CellContent.h"
 #include "Apple.h"
 #include "Snake.h"
 #include "Config.h"
 
+
 class Board
 {
-	private:
+	private:	
 		Config config;
-		std::vector<std::vector<Cell>> cells;
-		Apple apple;
-		Snake snake;
 
-		void InitCells();
+		std::vector<std::vector<Cell>> cells;
+		
+		void InitField();
 		void InitSnake();
-		void InitApple();
+		
 
 	public:
 		Board();
 
-		Cell GetCell(int row, int col);
-		Cell GetAppleCell();
-		std::vector<std::vector<Cell>> GetCells();
-
 		void Init();
+		bool IsWin();
 		void PrintBoard();
+
+		Cell CreateApple();
+		std::deque<Cell> CreateSnake();
+
+		Cell GetCell(int row, int col);
+		std::vector<std::vector<Cell>> GetAllCells();
+		void ChangeCellContent(int row, int col, CellContent cellContent);
+		
 };
 
