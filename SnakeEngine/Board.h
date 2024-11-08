@@ -9,22 +9,26 @@
 //#include <iomanip>
 
 #include "Cell.h"
-#include "CellContent.h"
 #include "Apple.h"
 #include "Snake.h"
 #include "Config.h"
+#include "CellContent.h"
+#include "MoveDirection.h"
 
 
-class Board
+
+struct Board
 {
 	private:	
-		Config config;
-
+		Config config = Config();
 		std::vector<std::vector<Cell>> cells;
 		
 		void InitField();
-		void InitSnake();
 		
+		Cell GetLeftNeighbor(int row, int column);
+		Cell GetTopNeighbor(int row, int column);
+		Cell GetRightNeighbor(int row, int column);
+		Cell GetBottomNeighbor(int row, int column);
 
 	public:
 		Board();
@@ -38,6 +42,8 @@ class Board
 
 		Cell GetCell(int row, int col);
 		std::vector<std::vector<Cell>> GetAllCells();
+		Cell GetNeighborCell(int row, int col, MoveDirection moveDirection);
+
 		void ChangeCellContent(int row, int col, CellContent cellContent);
 		
 };

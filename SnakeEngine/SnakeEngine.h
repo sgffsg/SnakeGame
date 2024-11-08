@@ -14,9 +14,9 @@ class SnakeEngine
 	
 	private:
 		Apple apple = Apple();
-		Snake snake = Snake();
 		Board board = Board();
-		Config config = Config();
+		Snake snake = Snake();
+		Config config;
 
 		void InputHandler();
 	public:

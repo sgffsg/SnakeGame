@@ -1,17 +1,18 @@
 #pragma once
-#include "Config.h"
 #include "CellContent.h"
+#include "Config.h"
 
-class Cell
+
+
+struct Cell
 {
 	private:
+		
+		CellContent cellContent;
+		Config config = Config();
+	public:
 		int x;
 		int y;
-		CellContent cellContent;
-
-		Config config;
-	public:
-		
 
 		Cell();
 		Cell(int x, int y);

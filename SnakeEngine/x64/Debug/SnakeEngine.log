@@ -4,4 +4,4 @@
   Snake.cpp
   SnakeEngine.cpp
   Создание кода...
-C:\Users\Sakata\source\repos\SnakeGame\SnakeEngine\SnakeEngine.cpp(1,1): error C1090: Произошел сбой при вызове API PDB, код ошибки "3": C:\Users\Sakata\source\repos\SnakeGame\x64\Debug\SnakeEngine.pdb
+  SnakeEngine.vcxproj -> C:\Users\Sakata\source\repos\SnakeGame\x64\Debug\SnakeEngine.lib

@@ -4,12 +4,13 @@
 void SnakeEngine::StartGame()
 {
 	this->board.Init();
-	this->apple = this->board.CreateApple();
 	this->snake.snakeBody = this->board.CreateSnake();
-	this->config.gameIsStarted = true;
-	this->config.isPlayerWin = false;
-	std::cout << "Игра Запущена" << std::endl;
+	this->apple = this->board.CreateApple();
 	
+	this->config.isPlayerWin = false;
+	this->config.gameIsStarted = true;
+	
+	std::cout << "Игра Запущена" << std::endl;
 	this->Update();
 }
 
@@ -60,6 +61,7 @@ void SnakeEngine::Update()
 		this->board.PrintBoard();
 		this->InputHandler();
 		this->snake.Move();
+		this->board.GetNeighborCell(this->snake.snakeBody[0].x, this->snake.snakeBody[0].y, this->snake.GetMoveDirection());
 		
 		std::cout << "\nИдет игра" << std::endl;
 		std::cout << "MoveDirection: " << (int)snake.GetMoveDirection() << std::endl;

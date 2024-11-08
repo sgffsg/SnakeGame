@@ -1,12 +1,12 @@
 #pragma once
 #include "Cell.h"
 
-class Apple
+struct Apple
 {
 	private:
-		Cell* appleCell;
-	public:
 		
+	public:
+		Cell* appleCell;
 
 		Apple();
 		Apple(Cell appleCell);

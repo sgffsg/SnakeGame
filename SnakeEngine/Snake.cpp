@@ -1,24 +1,24 @@
 #include "Snake.h"
+
 #include <conio.h>
 #include <iostream>
 #include <string>
 
-
-
-Snake::Snake()
+Snake::Snake()//Board &board)
 {
-	this->moveDirection = MoveDirection::NONE;
+	this->snakeBody = std::deque<Cell>();
+	this->moveDirection = MoveDirection::UP;
 	this->lastMoveDirection = MoveDirection::NONE;
 }
 
 void Snake::Init()
 {
-	int startPosRow = config.BOARD_ROW_SIZE / 2 - 1;
-	int startPosCol = config.BOARD_COLUMN_SIZE / 2 - 1;
+	
 }
 
 void Snake::Move()
 {
+
 	this->lastMoveDirection = this->moveDirection;
 }
 

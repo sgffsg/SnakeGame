@@ -1,5 +1,6 @@
 #include "Cell.h"
 
+
 Cell::Cell()
 {
 	this->x = -1;
@@ -23,8 +24,8 @@ Cell::Cell(int x, int y, CellContent cellContent)
 
 bool Cell::OnBoard()
 {
-	return (x >= 0 && x < this->config.BOARD_ROW_SIZE) &&
-			(y >= 0 && y < this->config.BOARD_COLUMN_SIZE);
+	return (x >= 0 && x < config.BOARD_ROW_COUNT) &&
+			(y >= 0 && y < config.BOARD_COLUMN_COUNT);
 }
 
 CellContent Cell::GetCellContent()
@@ -36,31 +37,6 @@ void Cell::ChangeCellContent(CellContent newCellContent)
 {
 	this->cellContent = newCellContent;
 }
-
-const char Cell::GetCellOutSymbol()
-{
-    switch (cellContent)
-    {
-		case CellContent::EMPTY:
-			return config.CELL_OUT;
-
-		case CellContent::BORDER:
-			return config.BORDER_OUT;
-
-		case CellContent::SNAKE_HEAD:
-			return config.SNAKE_HEAD_OUT;
-
-		case CellContent::SNAKE_TAIL:
-			return config.SNAKE_TAIL_OUT;
-
-		case CellContent::APPLE:
-			return config.APPLE_OUT;
-
-		default:
-			return config.SPACE_OUT;
-    }
-}
-
 
 bool Cell::IsEmpty()
 {
@@ -76,4 +52,28 @@ bool Cell::IsContainsSnake()
 {
 	return this->cellContent == CellContent::SNAKE_HEAD || 
 			 this->cellContent == CellContent::SNAKE_TAIL;
+}
+
+const char Cell::GetCellOutSymbol()
+{
+	switch (cellContent)
+	{
+	case CellContent::EMPTY:
+		return config.CELL_OUT;
+
+	case CellContent::BORDER:
+		return config.BORDER_OUT;
+
+	case CellContent::SNAKE_HEAD:
+		return config.SNAKE_HEAD_OUT;
+
+	case CellContent::SNAKE_TAIL:
+		return config.SNAKE_TAIL_OUT;
+
+	case CellContent::APPLE:
+		return config.APPLE_OUT;
+
+	default:
+		return config.SPACE_OUT;
+	}
 }
