@@ -13,16 +13,26 @@ class SnakeEngine
 {
 	
 	private:
-		Apple apple = Apple();
 		Board board = Board();
+		Apple apple = Apple(-1, -1);
 		Snake snake = Snake();
 		Config config;
 
+		int difficultModificator;
+
+		void Update();
+
 		void InputHandler();
+		void InputArrowHandler();
+		void InputKeyboardHandler(char input);
+
+		void CheckCollision();
+		void IncreaseDifficult();
+		
 	public:
 		void StartGame();
 		void EndGame();
 
-		void Update();
+		
 };
 

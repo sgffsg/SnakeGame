@@ -1,49 +1,33 @@
 #include "SnakeEngine.h"
 
-
 void SnakeEngine::StartGame()
 {
 	this->board.Init();
+	this->snake.moveDirection = MoveDirection::UP;
+
 	this->snake.snakeBody = this->board.CreateSnake();
-	this->apple = this->board.CreateApple();
-	
+	this->snake.ChangeSneakHeadPosition();
+
+	Cell appleCell = this->board.CreateApple();
+	this->apple = Apple(appleCell.x, appleCell.y);
+
+	this->difficultModificator = config.SNAKE_SPEED - snake.snakeBody.size() * 25;
 	this->config.isPlayerWin = false;
 	this->config.gameIsStarted = true;
-	
-	std::cout << "Игра Запущена" << std::endl;
+
+	std::cout << "Игра Запущена\n";
 	this->Update();
 }
 
-void SnakeEngine::InputHandler()
+void SnakeEngine::EndGame()
 {
-	if (_kbhit())
-	{
-		char input = _getch();
+	if (config.isPlayerWin)
+		std::cout << "Победа!\n";
+	else
+		std::cout << "Поражение.\n";
 
-		switch (input)
-		{
-			case 'w':
-				this->snake.SetMoveDirection(MoveDirection::UP);
-				break;
-			case 'a':
-				this->snake.SetMoveDirection(MoveDirection::LEFT);
-				break;
-			case 's':
-				this->snake.SetMoveDirection(MoveDirection::DOWN);
-				break;
-			case 'd':
-				this->snake.SetMoveDirection(MoveDirection::RIGHT);
-				break;
-			case 'q':
-				config.gameIsStarted = false;
-				break;
-			case 'r':
-				this->StartGame();
-				break;
-			default:
-				break;
-		}
-	}
+	this->config.gameIsStarted = false;
+	this->config.isPlayerWin = false;
 }
 
 void SnakeEngine::Update()
@@ -56,27 +40,103 @@ void SnakeEngine::Update()
 			this->EndGame();
 		}
 
-		Sleep(config.SNAKE_SPEED);
-				
-		this->board.PrintBoard();
+		if (config.isDifficultyEnabled)
+			Sleep(difficultModificator);
+		else
+			Sleep(config.SNAKE_SPEED);
+
 		this->InputHandler();
-		this->snake.Move();
-		this->board.GetNeighborCell(this->snake.snakeBody[0].x, this->snake.snakeBody[0].y, this->snake.GetMoveDirection());
-		
-		std::cout << "\nИдет игра" << std::endl;
-		std::cout << "MoveDirection: " << (int)snake.GetMoveDirection() << std::endl;
-		std::cout << "Нажмите q - для выхода, r - для перезапуска." << std::endl;
+		this->CheckCollision();
+		this->board.UpdateBoard(snake.snakeBody, apple);
+		this->board.PrintBoard();
+
+		std::cout << "\nИдет игра\n";
+		std::cout << "Нажмите q - для выхода, r - для перезапуска.\n";
 	}
 
 	this->EndGame();
 }
 
-void SnakeEngine::EndGame()
+void SnakeEngine::InputHandler()
 {
-	if (config.isPlayerWin)
-		std::cout << "Победа!" << std::endl;
-	else
-		std::cout << "Поражение." << std::endl;
-	this->config.gameIsStarted = false;
-	this->config.isPlayerWin = false;
+	if (_kbhit())
+	{
+		int input = _getch();
+		if (input == 0 || input == 224)
+			InputArrowHandler();
+		else
+			InputKeyboardHandler(input);
+	}
+}
+
+void SnakeEngine::InputArrowHandler()
+{
+	switch (_getch()) 
+	{
+		case 72:
+			this->snake.SetMoveDirection(MoveDirection::UP);
+			break;
+		case 75:
+			this->snake.SetMoveDirection(MoveDirection::LEFT);
+			break;
+		case 77:
+			this->snake.SetMoveDirection(MoveDirection::RIGHT);
+			break;
+		case 80:
+			this->snake.SetMoveDirection(MoveDirection::DOWN);
+			break;
+	}
+}
+
+
+void SnakeEngine::InputKeyboardHandler(char input)
+{
+	switch (input)
+	{
+		case 'w':
+			this->snake.SetMoveDirection(MoveDirection::UP);
+			break;
+		case 'a':
+			this->snake.SetMoveDirection(MoveDirection::LEFT);
+			break;
+		case 's':
+			this->snake.SetMoveDirection(MoveDirection::DOWN);
+			break;
+		case 'd':
+			this->snake.SetMoveDirection(MoveDirection::RIGHT);
+			break;
+		case 'q':
+			config.gameIsStarted = false;
+			break;
+		case 'r':
+			this->StartGame();
+			break;
+		default:
+			break;
+	}
+}
+
+void SnakeEngine::CheckCollision()
+{
+	Cell neighborCell = board.GetNeighborCell(this->snake.snakeHeadRowPosition, this->snake.snakeHeadColumnPosition, this->snake.moveDirection);
+
+	if (neighborCell.IsBorder() || neighborCell.IsContainsSnake())
+		this->EndGame();
+
+	if (neighborCell.IsContainsApple())
+	{
+		this->snake.Grow(neighborCell);
+		Cell cell = this->board.CreateApple();
+		this->apple = Apple(cell.x, cell.y);
+		IncreaseDifficult();
+	}
+		
+	if (neighborCell.IsEmpty())
+		this->snake.Move(neighborCell);
+}
+
+void SnakeEngine::IncreaseDifficult()
+{
+	if (difficultModificator > 25)
+		this->difficultModificator = config.SNAKE_SPEED - snake.snakeBody.size() * 25;
 }

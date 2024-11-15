@@ -2,14 +2,11 @@
 #include "Cell.h"
 
 struct Apple
-{
-	private:
-		
+{	
 	public:
-		Cell* appleCell;
+		int x;
+		int y;
 
-		Apple();
-		Apple(Cell appleCell);
-		Cell GetAppleCell();
+		Apple(int x, int y);
 };
 

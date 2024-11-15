@@ -1,7 +1,7 @@
-﻿  Apple.cpp
-  Board.cpp
-  Cell.cpp
+﻿  Board.cpp
   Snake.cpp
   SnakeEngine.cpp
+C:\Users\Sakata\source\repos\SnakeGame\SnakeEngine\SnakeEngine.cpp(14,50): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Sakata\source\repos\SnakeGame\SnakeEngine\SnakeEngine.cpp(141,51): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
   Создание кода...
   SnakeEngine.vcxproj -> C:\Users\Sakata\source\repos\SnakeGame\x64\Debug\SnakeEngine.lib

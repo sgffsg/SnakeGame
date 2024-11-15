@@ -54,6 +54,11 @@ bool Cell::IsContainsSnake()
 			 this->cellContent == CellContent::SNAKE_TAIL;
 }
 
+bool Cell::IsBorder()
+{
+	return this->cellContent == CellContent::BORDER;
+}
+
 const char Cell::GetCellOutSymbol()
 {
 	switch (cellContent)

@@ -18,12 +18,14 @@ struct Cell
 		Cell(int x, int y);
 		Cell(int x, int y, CellContent cellContent);
 
-		CellContent GetCellContent();
-		void ChangeCellContent(CellContent newCellContent);
 		const char GetCellOutSymbol();
 
+		CellContent GetCellContent();
+		void ChangeCellContent(CellContent newCellContent);
+		
 		bool OnBoard();
 		bool IsEmpty();
+		bool IsBorder();
 		bool IsContainsApple();
 		bool IsContainsSnake();
 };
